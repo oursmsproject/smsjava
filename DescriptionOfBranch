@@ -1,0 +1,4 @@
+This is the branch where developers will commit their code after pulling other developer's code and merging its own change.
+Commit message should contain the functionality description and the message must contain the files that are being 
+pushed into this branch so that in git log any one can understand very easily which files are committed in this 
+particular commit.
