@@ -1,2 +1,2 @@
-Full code base will be pushed from 78 branch to 76 for testing purpose.Any fix for the reported issue by tester will be pushed 
-in this branch.That fix should also be pushed in 78 branch as well. 
+Full code base will be pushed from 76 branch to 203 for client purpose after all testers pass the testing.
+Any fix for the reported issue by client will be pushed in this branch.That fix should also be pushed in 78,76 branch as well. 
