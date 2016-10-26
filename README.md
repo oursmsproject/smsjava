@@ -1,0 +1,2 @@
+# smsjava
+school management system
