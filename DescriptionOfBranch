@@ -1,4 +1,2 @@
-This is the branch where developers will commit their code after pulling other developer's code and merging its own change.
-Commit message should contain the functionality description and the message must contain the files that are being 
-pushed into this branch so that in git log any one can understand very easily which files are committed in this 
-particular commit.
+Full code base will be pushed from 78 branch to 76 for testing purpose.Any fix for the reported issue by tester will be pushed 
+in this branch.That fix should also be pushed in 78 branch as well. 
