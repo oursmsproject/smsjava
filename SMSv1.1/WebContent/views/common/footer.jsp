@@ -65,5 +65,10 @@
 <script src="${pageContext.request.contextPath}/static/js/custom.min.js"></script>
 <!-- alert for success or failure -->
 <script src="${pageContext.request.contextPath}/static/js/sweetalert.js"></script>
+<!-- Datatables -->
+<script src="${pageContext.request.contextPath}/static/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/dataTables.bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/dataTables.responsive.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/responsive.bootstrap.js"></script>
 </body>
 </html>
