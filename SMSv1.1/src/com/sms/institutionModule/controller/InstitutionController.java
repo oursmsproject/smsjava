@@ -1,6 +1,7 @@
 package com.sms.institutionModule.controller;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sms.dto.InstitutionDto;
 import com.sms.institutionModule.service.InstitutionService;
@@ -44,26 +46,28 @@ public class InstitutionController {
 		return "institution/institutionSetUp";
 	}
 
-	@RequestMapping(value = "/saveInstitution", method = RequestMethod.POST)
-	public String saveInstitution(@ModelAttribute("institutionForm")@Validated InstitutionDto institutionDtoObj,ModelMap model) throws InstantiationException, IllegalAccessException, InvocationTargetException{
+	@RequestMapping(value = "/saveInstitution", headers = "Accept=*/*", method = RequestMethod.POST)
+	public @ResponseBody
+	Map saveInstitution(@ModelAttribute("institutionForm")@Validated InstitutionDto institutionDtoObj,ModelMap model) throws InstantiationException, IllegalAccessException, InvocationTargetException{
+		Map returnMap = new HashMap();
 		String code = "InstitutionControllersaveInstitution";
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		org.springframework.security.core.userdetails.User user = (User) authentication.getPrincipal();
 		Institution institutionObj = SMSUtility.convert(institutionDtoObj, Institution.class);
 		institutionObj.setCreatedBy(0L);
+		logger.info(institutionObj);
 		try {
-			Map returnMap = institutionService.createInstituion(institutionObj);
+			returnMap = institutionService.createInstituion(institutionObj);
 			if(returnMap.get("errorCode")!=null && !((String)returnMap.get("errorCode")).equals("")){
-				model.put("errMsg",errorCodeSource.getMessage(code,null,Locale.US));
+				returnMap.put("errMsg",errorCodeSource.getMessage(code,null,Locale.US));
 			}	else{
-				model.put("successMsg",successCodeSource.getMessage(code,null,Locale.US));
+				returnMap.put("successMsg",successCodeSource.getMessage(code,null,Locale.US));
 			}
 		} catch (Exception e) {
 			logger.error("Exception -"+code+"-"+e.getMessage());
-			model.put("errMsg",errorCodeSource.getMessage(code,null,Locale.US));
+			returnMap.put("errMsg",errorCodeSource.getMessage(code,null,Locale.US));
 		}
-		model.put("institutionForm", new InstitutionDto());
-		return "institution/institutionSetUp";
+		return returnMap;
 	}
 
 	

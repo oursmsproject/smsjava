@@ -397,7 +397,7 @@
 
 <!-- modal start on click of finish button click -->
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
-	aria-hidden="true">
+	aria-hidden="true" id="instituteModalId">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 
@@ -692,7 +692,20 @@
 	}
 	
 	function submitInsCreate(frmObj){
-		swal("Good job!", "You clicked the button!", "success"); 
-		frmObj.submit();
+		$.ajax({
+			type: frmObj.attr('method'),
+            url: frmObj.attr('action'),
+            data: frmObj.serialize(),
+            dataType: 'json',
+	        success: function (response) {
+	        	if(response.successMsg){
+	        		$("#instituteModalId .close").click();
+	        		swal("", response.successMsg, "success"); 
+	        	}	
+	        	if(response.errMsg)
+	        		swal("", response.errMsg, "error"); 
+	        	
+	        }
+	    });
 	}
 </script>

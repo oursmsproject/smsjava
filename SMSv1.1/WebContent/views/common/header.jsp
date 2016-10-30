@@ -31,6 +31,9 @@
     <!-- Custom Theme Style -->
     <link href="${pageContext.request.contextPath}/static/css/custom.min.css" rel="stylesheet" type='text/css'>
     <link href="${pageContext.request.contextPath}/static/css/sweetalert.css" rel="stylesheet" type='text/css'>
+     <!-- Datatables -->
+    <link href="${pageContext.request.contextPath}/static/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/responsive.bootstrap.min.css" rel="stylesheet">
     <script>
 		function logOut() {
 			document.getElementById("logoutForm").submit();
